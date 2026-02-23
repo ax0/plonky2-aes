@@ -88,9 +88,9 @@ pub fn decrypt(ks: Point, ct: &[Fq], nonce: F, l: usize) -> Vec<Fq> {
         s = hash_state(s);
 
         // release
-        m[3 * i] = s[1] + ct[3 * i];
-        m[3 * i + 1] = s[2] + ct[3 * i + 1];
-        m[3 * i + 2] = s[3] + ct[3 * i + 2];
+        m[3 * i] = ct[3 * i] - s[1];
+        m[3 * i + 1] = ct[3 * i + 1] - s[2];
+        m[3 * i + 2] = ct[3 * i + 2] - s[3];
 
         // modify state
         s[1] = ct[3 * i];
