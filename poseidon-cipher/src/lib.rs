@@ -150,5 +150,6 @@ mod tests {
 
         let m = decrypt(ks, &ct, nonce, l);
         assert_eq!(m, msg);
+        assert_eq!(&msg, &ct[..msg_len]);
     }
 }
